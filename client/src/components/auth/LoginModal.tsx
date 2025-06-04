@@ -11,8 +11,18 @@ import {
 
 import React from 'react'
 import { Button } from "../ui/button"
+import { signIn } from "next-auth/react"
 
 const LoginModal = () => {
+
+
+const handleLogin = () => {
+  signIn("google",{
+    callbackUrl:"/dashboard",
+    redirect:true,
+  })
+}
+
   return (
     <Dialog>
   <DialogTrigger asChild>
@@ -26,7 +36,8 @@ const LoginModal = () => {
 
       </DialogDescription>
     </DialogHeader>
-    <Button variant="outline">
+    <Button variant="outline"
+    onClick={handleLogin}>
         <img 
         src="/images/google.png" 
         alt="google"
